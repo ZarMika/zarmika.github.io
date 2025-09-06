@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="tes.css">
+<head>
+    <title>Quiz</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="quiz-title">Bandung Quiz</div>
+        <div class="question">What is the nickname of Bandung?</div>
+        <div class="answer" onclick="checkAnswer('Kota Kembang')">Kota Kembang</div>
+        <div class="answer" onclick="checkAnswer('Paris of the East')">Paris of the East</div>
+        <div class="answer" onclick="checkAnswer('City of Heroes')">City of Heroes</div>
+        <div class="answer" onclick="checkAnswer('The City of Lights')">The City of Lights</div>
+        <button class="submit-btn" onclick="submitQuiz()">Submit</button>
+        <button class="submit-btn" onclick="Return()">Return </button>
+        <div class="feedback" id="feedback"></div>
+    </div>
+
+    <script>
+        let selectedAnswer = '';
+        
+        function checkAnswer(answer) {
+            selectedAnswer = answer;
+            const answers = document.querySelectorAll('.answer');
+            answers.forEach(answer => {
+                answer.style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
+            });
+
+            const selected = Array.from(answers).find(answer => answer.textContent === selectedAnswer);
+            selected.style.backgroundColor = 'rgba(255, 255, 255, 0.6)';
+        }
+
+        function submitQuiz() {
+            const feedback = document.getElementById('feedback');
+            if (selectedAnswer === 'Kota Kembang') {
+                feedback.textContent = 'Correct! Bandung is known as Kota Kembang.';
+                feedback.className = 'feedback correct';
+            } else {
+                feedback.textContent = 'Wrong answer. The correct answer is Kota Kembang.';
+                feedback.className = 'feedback wrong';
+            }
+        }
+        function Return() {
+  location.replace("Bandung.html")
+}
+    </script>
+</body>
+</html>
